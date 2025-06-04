@@ -1,0 +1,104 @@
+# 2D 평면도를 3D로 변환하는 AI 기술 검토
+
+## 개요
+
+복합 문화공간이나 다른 영화관, 마트는 종종 층별로 평면안내도와 같은 지도를 3D 혹은 2.5d 지도로 구현되곤 한다.
+이 때 우리의 툴에서도 2D 평면도를 3D로 만들어주는 ai와 같은 툴을 사용하고자 한다. 이게 가능한 일인지 알아보고자, 자료조사를 시작했다.
+
+## 반자동
+
+반자동 툴의 경우는 아래와 같은 툴들이 있었다.
+
+
+| 도구                    | 자동 변환         | 커스터마이징  | 난이도 | 라이선스     |
+| --------------------- | ------------- | ------- | --- | -------- |
+| **Planner 5D**        | ✅ AI 인식       | ✅ 고급 옵션 | 낮음  | Freemium |
+| **Coohom**            | ❌ (직접 제작 중심)  | ✅       | 낮음  | Freemium |
+| **SketchUp**          | ❌ (직접 모델링)    | ✅ 고급 기능 | 중간  | 유료       |
+| **Revit**             | ✅ CAD 기반 변환   | ✅ 전문가용  | 높음  | 유료       |
+| **RoomSketcher**      | ❌             | ✅       | 낮음  | Freemium |
+| **Sweet Home 3D**     | ❌ (수동)        | ✅       | 낮음  | 무료       |
+
+**Planner 5D**
+- 다만 여기서 실제로 사용가능한 것으로 추정되는 2D 도면(pdf, png, jpg)을 3D로 만들어주는 툴은 `planner 5D`가 유일했다. 다만, 유료플랜을 구독해야 사용가능하였고, 프로그래밍적으로 사용가능한 형태가 아니라 수동으로 직접 이미지를 업로드 해야하는 형태로 생각된다.
+- 링크 : [Planner 5D](https://planner5d.com/ai)
+
+**Revit** 
+- 이 툴 이외에도 2D cad 도면을 3D cad로 만들어주는 툴들은 찾을 수 있었다. 즉 도면을 보고 직접 cad로 그리면 가능은 하겠지만, 자동화 된 워크플로우 구성은 불가능할 것 같다.
+
+**Blender + Add-ons**
+- 블렌더와 애드온을 결합하여 사람이 직접 2d 평면도를 쉽게 그려주고 그 걸 다시 3d로 만들어주는 툴들이 있었다.
+- 상세 설명 : [블렌더 기반 반자동화 툴 설명](#블렌더-기반-반자동화-툴-설명)
+
+**그 외**
+- 그 외에는 직접 웹 환경에서 2D 도면을 그리면 3D로 바꿔주는 플랫폼이었다. 즉 사람이 직접 평면도를 보면서 해당 플랫폼에 그리면 가능은 한 것으로 사료된다.
+
+### 블렌더 기반 반자동화 툴
+
+**Archimesh 및 Archipack 애드온 활용**
+설명: Blender 내에서 제공되는 Archimesh 및 Archipack 애드온을 활용하면, 2D 평면도를 기반으로 벽, 문, 창문 등을 손쉽게 생성하여 3D 모델링을 할 수 있습니다.
+
+특징:
+
+- 직관적인 UI로 빠른 모델링 가능
+
+- 다양한 건축 요소 프리셋 제공
+
+링크 : [Blender Architecture Addon Tutorial, Interior Design Floor Plan to 3D](https://www.youtube.com/watch?v=sF-iTbQYd0E)
+---
+
+**HomeBuilder 애드온**
+설명: HomeBuilder는 Blender에서 2D 평면도 이미지를 불러와 스케일을 설정하고, 이를 기반으로 빠르게 3D 모델을 생성할 수 있는 무료 애드온입니다.
+
+특징:
+
+- 이미지 기반의 빠른 모델링
+- 사용자 친화적인 인터페이스
+
+링크 : [The EASIEST Way to Create Floor Plans FROM IMAGES in Blender!](https://www.youtube.com/watch?v=sF-iTbQYd0E)
+
+---
+
+**BlenderBIM 애드온**
+설명: BlenderBIM은 IFC 형식의 BIM 데이터를 지원하는 애드온으로, 2D 도면을 기반으로 건축 요소를 생성하고, 이를 3D 모델로 확장할 수 있습니다.
+
+특징:
+
+- BIM 데이터와의 호환성
+- 정밀한 건축 모델링 지원
+
+링크 : [BlenderBIM - Floor plan - in 20mins (YouTube Tutorial)](https://www.youtube.com/watch?v=xlmbZHIaHJw)
+---
+
+**Tripo AI의 튜토리얼**
+설명: Tripo AI에서는 2D 도면을 DXF 형식으로 내보내고, 이를 Blender에 불러와 Archimesh 및 Archipack 애드온을 활용하여 3D 모델을 생성하는 과정을 자세히 설명합니다.
+
+특징:
+- DXF 파일을 통한 정밀한 모델링
+- 애드온을 활용한 효율적인 작업 흐름
+
+링크: [Converting 2D Drawings to 3D Model in Blender - Tripo AI](https://www.youtube.com/watch?v=xlmbZHIaHJw)
+
+
+## 자동
+
+
+| 도구                    | 자동 변환         | 커스터마이징  | 난이도 | 라이선스     |
+| --------------------- | ------------- | ------- | --- | -------- |
+| **Blender + Add-ons** | ✅ (개발자 셋업 필요) | ✅       | 높음  | 오픈소스     |
+
+**Blender + Add-ons**
+- 아래는 실제로 프로그래밍 형태로 배포되는 2d -> 3d 변환 블렌더 오픈소스 프로젝트입니다.
+
+### FloorplanToBlender3D (오픈소스 프로젝트)
+설명: 이 프로젝트는 2D 평면도 이미지를 자동으로 분석하여 3D 모델로 변환하는 Python 기반의 도구입니다. Docker 환경에서 실행되며, Swagger API를 통해 서버 형태로도 운영 가능합니다.
+
+특징:
+
+- 이미지 기반의 자동 3D 모델 생성
+- Docker를 활용한 손쉬운 배포
+- Jupyter Notebook을 통한 튜토리얼 제공
+
+링크: [GitHub - FloorplanToBlender3D](https://github.com/grebtsew/FloorplanToBlender3d)
+
+*이 쪽은 추가적으로 기술검증을 거쳐야 좀 더 자세하게 알 수 있을 듯 함*
