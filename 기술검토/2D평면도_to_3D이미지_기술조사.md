@@ -109,3 +109,13 @@
 🔗 [GitHub - FloorplanToBlender3D](https://github.com/grebtsew/FloorplanToBlender3d)
 
 > *이 프로젝트는 기술 검증을 통해 추가 분석이 필요함.*
+
+#### 기술 실 검증 현황
+
+`FloorplanToBlender3D`의 경우 Ubuntu OS 환경이 필요하다고 하여, 윈도우에 내장 된 WSL을 사용하였으나, 해당 툴은 WSL같은 가상 리눅스 환경이 아닌 실제 리눅스 기반 환경 + 리눅스 기반 Blender의 설치가 필요한 것으로 사료됨. 따라서, gui가 내장된 리눅스 클라우드를 통해 검증을 진행할 예정.
+
+현재 진행 상황 요약
+
+1. 블렌더 윈도우 설치
+2. FloorplanToBlender3D 도커 설치
+3. 현재 실제 리눅스 환경이 없는 관계로 gui 클라우드 환경에서 검증해야할 것으로 사료됨.
